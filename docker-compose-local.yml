@@ -1,0 +1,37 @@
+version: '3.8'
+name: 'rinha-backend-spring-local'
+
+services:
+  postgres-db:
+    image: postgres:latest
+    container_name: rinha-backend-db
+    user: postgres
+    command: 'postgres -c max_connections=600 -c shared_buffers=512MB -c synchronous_commit=off -c fsync=off'
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: '1200M'
+    volumes:
+      - ./src/main/resources/init.sql:/docker-entrypoint-initdb.d/init.sql
+    network_mode: 'host'
+
+  cache:
+    hostname: cache
+    image: redis:latest
+    command: 'redis-server --save "" --appendonly no'
+    ports:
+      - '6379:6379'
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: '300M'
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
+    network_mode: 'host'
