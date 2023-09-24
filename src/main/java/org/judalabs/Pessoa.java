@@ -9,6 +9,7 @@ import org.hibernate.annotations.GenericGenerator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import io.quarkus.hibernate.reactive.panache.PanacheEntityBase;
+import io.quarkus.panache.common.Page;
 import io.smallrye.mutiny.Uni;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -61,6 +62,7 @@ public class Pessoa extends PanacheEntityBase {
         String searchInput = "%" + like + "%";
 
         return Pessoa.find("buscaCompleta like ?1", searchInput)
+                .page(Page.ofSize(50))
                 .project(PessoaDTO.class)
                 .list();
     }
