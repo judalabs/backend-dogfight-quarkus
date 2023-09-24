@@ -13,6 +13,8 @@ For more details, please visit: https://github.com/zanfranceschi/rinha-de-backen
 
 ### How to execute:
     docker compose up
+    cd stress-test/
+    ./run-test.sh 
 
 ### Stack
 
