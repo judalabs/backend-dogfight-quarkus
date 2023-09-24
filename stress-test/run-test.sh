@@ -7,7 +7,7 @@
 echo "a"
 GATLING_BIN_DIR=${PWD}/gatling/bin
 echo "b"
-WORKSPACE=$HOME/projects/rinha-de-backend-2023-q3/stress-test
+WORKSPACE=$HOME/projects/rinha/stress-test
 
 sh $GATLING_BIN_DIR/gatling.sh -rm local -s RinhaBackendSimulation \
     -rd "DESCRICAO" \
