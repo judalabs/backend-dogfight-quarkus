@@ -24,9 +24,9 @@ For more details, please visit: https://github.com/zanfranceschi/rinha-de-backen
 - Redis ( 0.05 / 50M )
 
 ### Results
-- 48759 Inserts
-- 99pth pct: 31021ms
-- execution time: 265s
-- Total OK requests: 96783
+- 46576 Inserts
+- 99pth pct: 26393ms
+- execution time: 237s
+- Total OK requests: 114991
 
 ![alt text](results.png)
