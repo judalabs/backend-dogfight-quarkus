@@ -41,17 +41,16 @@ public class PessoaService {
 
     @WithSession
     public Uni<List<PessoaDTO>> buscarPorTermo(String termo) {
-//        final List<Pessoa> pessoas = Pessoa.listWhereLike(termo);
-//        List<PessoaDTO> pessoasDTO = new ArrayList<>();
-//        for(int i = 0; i < pessoas.size(); i++) {
-//            pessoasDTO.add(PessoaDTO.toDto(pessoas.get(i)));
-//        }
-//        return pessoasDTO;
         return Pessoa.listWhereLike(termo);
     }
 
     @WithSession
     public Uni<Long> contar() {
-        return Pessoa.count();
+        try {
+            Thread.sleep(5000);
+            return Pessoa.count();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

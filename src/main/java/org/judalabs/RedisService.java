@@ -31,6 +31,6 @@ public class RedisService implements Cacheable {
 
     public void atualizacaoDeCacheListener(PessoaDTO pessoaDTO) {
         redisExistsApelido.set(pessoaDTO.getApelido(), true)
-                .subscribe().with(c -> redisExistsApelido.set(pessoaDTO.getApelido(), true));
+                .subscribe().with(c -> redisFindOne.set(pessoaDTO.getId().toString(), pessoaDTO));
     }
 }
